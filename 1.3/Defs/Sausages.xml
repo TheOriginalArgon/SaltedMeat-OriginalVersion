@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- Raw Sausage -->
+	<ThingDef ParentName="OrganicProductBase">
+		
+		<!-- Basic Properties -->
+		<defName>SM_Sausage_Raw</defName>
+		<label>raw sausage</label>
+		<description>ground meat mixed with salt and spices, despite tasting bad, if you let it dry for a long time, you can obtain the most delicious sausage.</description>
+		
+		<thingCategories>
+			<li>FoodMeals</li>
+		</thingCategories>
+		
+		<!-- Graphic -->
+		<graphicData>	
+			<texPath>Things/RawSausage</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		
+		<!-- Properties -->
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<MarketValue>5</MarketValue>
+			<Nutrition>0.05</Nutrition>
+			<FoodPoisonChanceFixedHuman>0.02</FoodPoisonChanceFixedHuman>
+		</statBases>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<tickerType>Rare</tickerType>
+		
+		<comps>
+			
+			<li Class="CompProperties_Ingredients" />
+			<li Class="VanillaCookingExpanded.CompProperties_MaturingAlcohol">
+				<daysToRotStart>18</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+				<maturingString>SM_SausageMaturing</maturingString>
+				<maturingProperly>SM_SausageMaturingCorrectly</maturingProperly>
+				<maturingSlowly>SM_SausageRefrigerated</maturingSlowly>
+				<maturingStopped>SM_SausageFrozen</maturingStopped>
+				<thingToTransformTo>SM_Sausage</thingToTransformTo>
+			</li>
+		</comps>
+		
+		<ingestible>
+			<foodType>Meat</foodType>
+			<preferability>DesperateOnly</preferability>
+			<tasteThought>AteRawFood</tasteThought>
+			<ingestEffect>EatMeat</ingestEffect>
+			<ingestSound>RawMeat_Eat</ingestSound>
+		</ingestible>
+	
+	</ThingDef>
+	
+	<!-- Sausage -->
+	<ThingDef ParentName="OrganicProductBase">
+		
+		<!-- Basic Properties -->
+		<defName>SM_Sausage</defName>
+		<label>sausage</label>
+		<description>ground meat mixed with salt and spices that has been let dry for long time, tasty and very nutritious, it is a popular food among neolithic and medieval people.</description>
+		
+		<thingCategories>
+			<li>FoodMeals</li>
+		</thingCategories>
+		
+		<!-- Graphic -->
+		<graphicData>	
+			<texPath>Things/Sausage</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		
+		<!-- Properties -->
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<MarketValue>6.3</MarketValue>
+			<Nutrition>0.1</Nutrition>
+			<FoodPoisonChanceFixedHuman>0.0001</FoodPoisonChanceFixedHuman>
+		</statBases>
+		<altitudeLayer>Item</altitudeLayer>
+		<tickerType>Rare</tickerType>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		
+		<comps>
+			
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>250</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+		
+		<ingestible>
+			<foodType>Meat</foodType>
+			<preferability>MealFine</preferability>
+			<tasteThought>AteFineMeal</tasteThought>
+			<ingestEffect>EatMeat</ingestEffect>
+			<ingestSound>RawMeat_Eat</ingestSound>
+		</ingestible>
+	
+	</ThingDef>
+	
+	<!-- Sausage Recipe -->
+	<RecipeDef>
+		<defName>SM_Make_Sasusage</defName>
+		<label>make sausage</label>
+		<description>Mix grounded meat with salt and spices to make a sausage. Let it dry for many days and you'll obtain a delicious sausage.</description>
+		<jobString>Making sausage</jobString>
+		<workSkill>Cooking</workSkill>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<workAmount>800</workAmount>
+		<effectWorking>ButcherFlesh</effectWorking>
+		<soundWorking>Recipe_ButcherCorpseFlesh</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		
+		<recipeUsers>
+			<li>TableButcher</li>			
+		</recipeUsers>
+
+		<fixedIngredientFilter>
+			<categories>
+				<li>MeatRaw</li>
+			</categories>
+			<disallowedThingDefs>
+				<li>Meat_Human</li>
+				<li>Meat_Megaspider</li>
+				<li>SM_Salted_Meat</li>
+				<li>SM_Sausage_Raw</li>
+				<li>SM_Sausage</li>
+				
+			</disallowedThingDefs>
+			
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>MeatRaw</li>
+			</categories>
+			
+			<disallowedThingDefs>
+				<li>Meat_Human</li>
+				<li>Meat_Megaspider</li>
+				<li>SM_Salted_Meat</li>
+				<li>SM_Sausage_Raw</li>
+				<li>SM_Sausage</li>
+				
+			</disallowedThingDefs>
+		</defaultIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+					</categories>
+				</filter>
+				<count>50</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>VCE_Salt</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>VCE_RawSpices</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+		
+		</ingredients>
+		<products>
+			<SM_Sausage_Raw>50</SM_Sausage_Raw>
+		</products>
+		
+		<researchPrerequisite>SM_Salt_Conserving</researchPrerequisite>
+		
+	</RecipeDef>
+
+</Defs>

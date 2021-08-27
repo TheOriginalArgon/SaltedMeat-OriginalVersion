@@ -1,0 +1,20 @@
+<Patch>
+
+<Operation Class="PatchOperationFindMod">
+    <mods>
+        <li>Vanilla Factions Expanded - Medieval</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+        <success>Always</success>
+        <operations>
+            <li Class="PatchOperationAdd">
+                <xpath>/Defs/ItemProcessor.CombinationDef [defName = "VFEM_SmokerMeatToSmokedMeat"]/disallowedThingDefs</xpath>
+                <value>
+                    <li>SM_Salted_Meat</li>
+                </value>
+            </li>
+        </operations>
+    </match>
+</Operation>
+
+</Patch>

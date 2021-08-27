@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- Salted Meat -->
+	<ThingDef ParentName="OrganicProductBase">
+		
+		<!-- Basic Properties -->
+		<defName>SM_Salted_Meat</defName>
+		<label>salted meat</label>
+		<description>Meat preserved for longer time by mixing it with salt. Salt absorbs water, preventing bacterias for rotting the meat.</description>
+		
+		<thingCategories>
+			<li>MeatRaw</li>
+		</thingCategories>
+		
+		<!-- Graphic -->
+		<graphicData>	
+			<texPath>Things/SM_SaltedMeat</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		
+		<!-- Properties -->
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<MarketValue>2.6</MarketValue>
+			<Nutrition>0.05</Nutrition>
+			<FoodPoisonChanceFixedHuman>0.008</FoodPoisonChanceFixedHuman>
+		</statBases>
+		
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>90</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+		
+		<ingestible>
+			<foodType>Meat</foodType>
+			<preferability>DesperateOnly</preferability>
+			<tasteThought>AteRawFood</tasteThought>
+			<ingestEffect>EatMeat</ingestEffect>
+			<ingestSound>RawMeat_Eat</ingestSound>
+		</ingestible>
+	
+	</ThingDef>
+	
+	<ThingDef ParentName="OrganicProductBase">
+		
+		<!-- Basic Properties -->
+		<defName>SM_PickledVegetables</defName>
+		<label>pickled vegetables</label>
+		<description>Vegetables preserved for long time by mixing them with salt and water.</description>
+		
+		<thingCategories>
+			<li>PlantFoodRaw</li>
+		</thingCategories>
+		
+		<!-- Graphic -->
+		<graphicData>	
+			<texPath>Things/SM_PickledVegetables</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		
+		<!-- Properties -->
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<MarketValue>2.2</MarketValue>
+			<Nutrition>0.1</Nutrition>
+			<FoodPoisonChanceFixedHuman>0.0002</FoodPoisonChanceFixedHuman>
+		</statBases>
+		
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>90</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+		
+		<ingestible>
+			<foodType>VegetableOrFruit</foodType>
+			<preferability>DesperateOnly</preferability>
+			<ingestEffect>EatVegetarian</ingestEffect>
+			<ingestSound>RawVegetable_Eat</ingestSound>
+		</ingestible>
+	
+	</ThingDef>
+	
+	<!-- Vegs Recipe -->
+	<RecipeDef>
+		<defName>SM_Make_PickledVegetables</defName>
+		<label>make pickled vegetables</label>
+		<description>Preserve vegetables with salt and water.</description>
+		<jobString>Making pickled vegetables</jobString>
+		<workSkill>Cooking</workSkill>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<workAmount>2000</workAmount>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Brewing</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		
+		<recipeUsers>
+			<li>TableButcher</li>			
+		</recipeUsers>
+
+		<fixedIngredientFilter>
+			<categories>
+				<li>PlantFoodRaw</li>
+			</categories>
+			
+			<disallowedThingDefs>
+				<li>SM_PickledVegetables</li>
+			</disallowedThingDefs>
+			
+			
+			
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>PlantFoodRaw</li>
+			</categories>
+			
+			<disallowedThingDefs>
+				<li>SM_PickledVegetables</li>
+			</disallowedThingDefs>
+			
+		</defaultIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+				</filter>
+				<count>30</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>VCE_Salt</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+		
+		</ingredients>
+		<products>
+			<SM_PickledVegetables>30</SM_PickledVegetables>
+		</products>
+		
+		<researchPrerequisite>SM_Salt_Conserving</researchPrerequisite>
+		
+	</RecipeDef>
+	
+	
+	<!-- Salted Meat Recipe -->
+	<RecipeDef>
+		<defName>SM_Make_Salted_Meat</defName>
+		<label>preserve meat with salt</label>
+		<description>Make meat last much longer by correctly mixing it with salt.</description>
+		<jobString>Making salted meat</jobString>
+		<workSkill>Cooking</workSkill>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<workAmount>2000</workAmount>
+		<effectWorking>ButcherFlesh</effectWorking>
+		<soundWorking>Recipe_Brewing</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		
+		<recipeUsers>
+			<li>TableButcher</li>			
+		</recipeUsers>
+
+		<fixedIngredientFilter>
+			<categories>
+				<li>MeatRaw</li>
+			</categories>
+			
+			<disallowedThingDefs>
+				<li>SM_Salted_Meat</li>
+				<li>Meat_Human</li>
+				<li>Meat_Megaspider</li>
+			</disallowedThingDefs>
+			
+			
+			
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>MeatRaw</li>
+			</categories>
+			
+			<disallowedThingDefs>
+				<li>Meat_Human</li>
+				<li>Meat_Megaspider</li>
+				<li>SM_Salted_Meat</li>
+			</disallowedThingDefs>
+			
+		</defaultIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+					</categories>
+				</filter>
+				<count>30</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>VCE_Salt</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+		
+		</ingredients>
+		<products>
+			<SM_Salted_Meat>30</SM_Salted_Meat>
+		</products>
+		
+		<researchPrerequisite>SM_Salt_Conserving</researchPrerequisite>
+		
+	</RecipeDef>
+	
+	<!-- Research Project -->
+	<ResearchProjectDef>
+		<defName>SM_Salt_Conserving</defName>
+		<label>salt conserving methods</label>
+		<description>Conserve meat by adding them great amounts of salt.</description>
+		<baseCost>800</baseCost>
+		<techLevel>Medieval</techLevel>
+		<researchViewX>0.00</researchViewX>
+		<researchViewY>5.00</researchViewY>
+
+
+	</ResearchProjectDef>
+
+</Defs>

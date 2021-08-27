@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<SM_SausageMaturing>Sausage Maturing.</SM_SausageMaturing>
+	<SM_SausageFrozen>This sausage is frozen and won't mature.</SM_SausageFrozen>
+	<SM_SausageRefrigerated>This sausage is maturing very slowly. (matures in {0})</SM_SausageRefrigerated>
+	<SM_SausageMaturingCorrectly>This sausage is maturing correctly. (matures in {0})</SM_SausageMaturingCorrectly>
+
+</LanguageData>

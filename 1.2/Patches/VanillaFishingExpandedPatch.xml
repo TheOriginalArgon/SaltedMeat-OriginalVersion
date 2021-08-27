@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+			<mods>
+				<li>Vanilla Fishing Expanded</li>
+			</mods>
+
+			<match Class="PatchOperationSequence">
+				<success>Always</success>
+				<operations>
+				
+				
+					<li Class="PatchOperationAdd"> 
+						<xpath>/Defs</xpath>
+						<value>
+							
+							<!-- Dried Fish -->
+							<ThingDef ParentName="OrganicProductBase">
+								
+								<!-- Basic Properties -->
+								<defName>SM_Dried_Fish</defName>
+								<label>dried fish</label>
+								<description>Fish preserved by adding salt to it and drying it using heat, lasts much longer than normal fish, but not as longer as salted meat does.</description>
+								
+								<thingCategories>
+									<li>MeatRaw</li>
+								</thingCategories>
+								
+								<!-- Graphic -->
+								<graphicData>	
+									<texPath>Things/SM_DriedFish</texPath>
+									<graphicClass>Graphic_StackCount</graphicClass>
+								</graphicData>
+								
+								<!-- Properties -->
+								<statBases>
+									<MaxHitPoints>60</MaxHitPoints>
+									<MarketValue>2.6</MarketValue>
+									<Nutrition>0.05</Nutrition>
+									<FoodPoisonChanceFixedHuman>0.01</FoodPoisonChanceFixedHuman>
+								</statBases>
+								
+								<comps>
+									<li Class="CompProperties_Rottable">
+										<daysToRotStart>55</daysToRotStart>
+										<rotDestroys>true</rotDestroys>
+									</li>
+								</comps>
+								
+								<ingestible>
+									<foodType>Meat</foodType>
+									<preferability>DesperateOnly</preferability>
+									<tasteThought>AteRawFood</tasteThought>
+									<ingestEffect>EatMeat</ingestEffect>
+									<ingestSound>RawMeat_Eat</ingestSound>
+								</ingestible>
+							
+							</ThingDef>
+							
+						</value>
+					</li>
+					<li Class="PatchOperationAdd"> 
+						<xpath>/Defs</xpath>
+						<value>
+
+
+							<RecipeDef>
+								<defName>SM_MakeDriedFish_Small</defName>
+								<label>make dried fish</label>
+								<description>Dry fish by using salt and heat.</description>
+								<jobString>Drying fish.</jobString>
+								<workSpeedStat>CookSpeed</workSpeedStat>
+								<workSkill>Cooking</workSkill>
+								<effectWorking>Cook</effectWorking>
+								<workAmount>2000</workAmount>
+								<soundWorking>Recipe_Brewing</soundWorking>
+								<allowMixingIngredients>true</allowMixingIngredients>
+								<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+								<recipeUsers>
+									<li>Campfire</li>	
+									<li>ElectricStove</li>
+									<li>FueledStove</li>
+								</recipeUsers>
+								<ingredients>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>VCEF_RawAnchovy</li>
+												<li>VCEF_RawAngelfish</li>
+												<li>VCEF_RawGuppy</li>
+												<li>VCEF_RawHerring</li>
+												<li>VCEF_RawGoldfish</li>
+												<li>VCEF_RawMinnow</li>
+												<li>VCEF_RawClownfish</li>
+												<li>VCEF_RawSprat</li>
+												
+												<li>VCEF_RawBass</li>
+												<li>VCEF_RawEel</li>
+												<li>VCEF_RawTrout</li>
+												<li>VCEF_RawKoi</li>
+												<li>VCEF_RawPerch</li>
+												<li>VCEF_RawPiranha</li>
+												<li>VCEF_RawAnglerfish</li>
+												<li>VCEF_RawHaddock</li>
+												<li>VCEF_RawMackerel</li>
+												<li>VCEF_RawPufferfish</li>
+												
+												<li>VCEF_RawSalmon</li>
+												<li>VCEF_RawCatfish</li>
+												<li>VCEF_RawHalibut</li>
+												<li>VCEF_RawCod</li>
+												<li>VCEF_RawLobster</li>
+												<li>VCEF_RawSwordfish</li>
+												<li>VCEF_RawTuna</li>
+
+											</thingDefs>
+										</filter>
+										<count>0.5</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>VCE_Salt</li>
+											</thingDefs>
+										</filter>
+										<count>3</count>
+									</li>
+
+								</ingredients>
+								<fixedIngredientFilter>			
+									<thingDefs>
+										<li>VCEF_RawAnchovy</li>
+												<li>VCEF_RawAngelfish</li>
+												<li>VCEF_RawGuppy</li>
+												<li>VCEF_RawHerring</li>
+												<li>VCEF_RawGoldfish</li>
+												<li>VCEF_RawMinnow</li>
+												<li>VCEF_RawClownfish</li>
+												<li>VCEF_RawSprat</li>
+												
+												<li>VCEF_RawBass</li>
+												<li>VCEF_RawEel</li>
+												<li>VCEF_RawTrout</li>
+												<li>VCEF_RawKoi</li>
+												<li>VCEF_RawPerch</li>
+												<li>VCEF_RawPiranha</li>
+												<li>VCEF_RawAnglerfish</li>
+												<li>VCEF_RawHaddock</li>
+												<li>VCEF_RawMackerel</li>
+												<li>VCEF_RawPufferfish</li>
+												
+												<li>VCEF_RawSalmon</li>
+												<li>VCEF_RawCatfish</li>
+												<li>VCEF_RawHalibut</li>
+												<li>VCEF_RawCod</li>
+												<li>VCEF_RawLobster</li>
+												<li>VCEF_RawSwordfish</li>
+												<li>VCEF_RawTuna</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<defaultIngredientFilter>			
+									<thingDefs>
+										<li>VCEF_RawAnchovy</li>
+												<li>VCEF_RawAngelfish</li>
+												<li>VCEF_RawGuppy</li>
+												<li>VCEF_RawHerring</li>
+												<li>VCEF_RawGoldfish</li>
+												<li>VCEF_RawMinnow</li>
+												<li>VCEF_RawClownfish</li>
+												<li>VCEF_RawSprat</li>
+												
+												<li>VCEF_RawBass</li>
+												<li>VCEF_RawEel</li>
+												<li>VCEF_RawTrout</li>
+												<li>VCEF_RawKoi</li>
+												<li>VCEF_RawPerch</li>
+												<li>VCEF_RawPiranha</li>
+												<li>VCEF_RawAnglerfish</li>
+												<li>VCEF_RawHaddock</li>
+												<li>VCEF_RawMackerel</li>
+												<li>VCEF_RawPufferfish</li>
+												
+												<li>VCEF_RawSalmon</li>
+												<li>VCEF_RawCatfish</li>
+												<li>VCEF_RawHalibut</li>
+												<li>VCEF_RawCod</li>
+												<li>VCEF_RawLobster</li>
+												<li>VCEF_RawSwordfish</li>
+												<li>VCEF_RawTuna</li>
+									</thingDefs>
+								</defaultIngredientFilter>
+								<products>
+									<SM_Dried_Fish>20</SM_Dried_Fish>
+								</products>
+
+								<researchPrerequisite>SM_Salt_Conserving</researchPrerequisite>
+							</RecipeDef>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/RecipeDef[defName="SM_Make_SaltedMeat"]/fixedIgredientFilter</xpath>
+						<value>
+							<disallowedCategories>
+								<li>VCEF_RawFishCategory</li>
+							</disallowedCategories>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/RecipeDef[defName="SM_Make_SaltedMeat"]/defaultIngredientFilter</xpath>
+						<value>
+							<disallowedCategories>
+								<li>VCEF_RawFishCategory</li>
+							</disallowedCategories>
+						</value>
+					</li>
+				</operations>
+			</match>
+	</Operation>
+</Patch>
+			

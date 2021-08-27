@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef ParentName="RockBase">
+    <defName>MineableSalt</defName>
+    <label>compacted salt</label>
+    <graphicData>
+      <texPath>Things/Building/Linked/RockFlecked_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <color>(150, 119, 83)</color>
+      <colorTwo>(230,193,163)</colorTwo>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>1100</MaxHitPoints>
+    </statBases>
+    <description>Rock containing chunks of salt stone.</description>
+    <building>
+      <isResourceRock>true</isResourceRock>
+      <mineableThing>VCE_Salt</mineableThing>
+      <mineableYield>11</mineableYield>
+      <mineableScatterCommonality>0.65</mineableScatterCommonality>
+      <mineableScatterLumpSizeRange>5~8</mineableScatterLumpSizeRange>
+    </building>
+  </ThingDef>
+
+</Defs>
